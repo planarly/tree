@@ -326,9 +326,6 @@ const RefNodeList: React.RefForwardingComponent<NodeListRef, NodeListProps> = (p
               motionType={motionType}
               onMotionEnd={onMotionEnd}
               treeNodeRequiredProps={treeNodeRequiredProps}
-              onMouseMove={() => {
-                onActiveChange(null);
-              }}
             />
           );
         }}
