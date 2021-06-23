@@ -9,7 +9,7 @@ import { NodeElement, Key, DataNode, Entity, DataEntity, NodeInstance } from './
 import { TreeProps } from './Tree';
 
 const DRAG_SIDE_RANGE = 0.25;
-const DRAG_MIN_GAP = 2;
+const DRAG_MIN_GAP = 7;
 
 export function arrDel(list: Key[], value: Key) {
   const clone = list.slice();

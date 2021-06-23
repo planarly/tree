@@ -4,7 +4,29 @@
 .@{treePrefixCls} {
   margin: 0;
   border: 1px solid transparent;
-  
+  .@{treePrefixCls}-node-container {
+    display: flex;
+    flex-direction: column
+  }
+
+  .@{treePrefixCls}-placeholder {
+    box-sizing: border-box;
+    background: #ffffff;
+    border-style: dashed;
+    border-width: 0;
+    width: 100%;
+    height: 0;
+    opacity: 0;
+    transition: all 0.1s ease-in-out;
+    display: inline-block;
+    &--visible {
+      height: 25px;
+      width: 100%;
+      opacity: 1;
+      border-width: 1px;
+    }
+  }
+
   &-focused:not(&-active-focused) {
     border-color: cyan;
   }

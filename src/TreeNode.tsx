@@ -500,8 +500,8 @@ class InternalTreeNode extends React.Component<InternalTreeNodeProps, TreeNodeSt
           [`${prefixCls}-treenode-leaf-last`]: isEndNode,
 
           'drag-over': !disabled && dragOver,
-          'drag-over-gap-top': !disabled && dragOverGapTop,
-          'drag-over-gap-bottom': !disabled && dragOverGapBottom,
+          // 'drag-over-gap-top': !disabled && dragOverGapTop,
+          // 'drag-over-gap-bottom': !disabled && dragOverGapBottom,
           'filter-node': filterTreeNode && filterTreeNode(convertNodePropsToEventData(this.props)),
         })}
         style={style}
@@ -513,14 +513,29 @@ class InternalTreeNode extends React.Component<InternalTreeNodeProps, TreeNodeSt
         onMouseMove={onMouseMove}
         {...dataOrAriaAttributeProps}
       >
-        <Indent prefixCls={prefixCls} level={level} isStart={isStart} isEnd={isEnd} />
-        {this.renderSwitcher()}
-        {this.renderCheckbox()}
-        {this.renderSelector()}
+        <div className={`${prefixCls}-node-container`}>
+          <Placeholder prefixCls={prefixCls} show={dragOverGapTop} />
+          <div className={`${prefixCls}-node-content`}>
+            <Indent prefixCls={prefixCls} level={level} isStart={isStart} isEnd={isEnd} />
+            {this.renderSwitcher()}
+            {this.renderCheckbox()}
+            {this.renderSelector()}
+          </div>
+        </div>
       </div>
     );
   }
 }
+
+const Placeholder: React.FC<{ show: boolean; prefixCls: string }> = ({ show, prefixCls }) => {
+  return (
+    <span
+      className={classNames(`${prefixCls}-placeholder`, {
+        [`${prefixCls}-placeholder--visible`]: show,
+      })}
+    />
+  );
+};
 
 const ContextTreeNode: React.FC<TreeNodeProps> = props => (
   <TreeContext.Consumer>
