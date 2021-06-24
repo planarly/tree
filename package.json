@@ -41,7 +41,8 @@
     "lint": "eslint src/ examples/ --ext .tsx,.ts,.jsx,.js",
     "test": "father test",
     "gh-pages": "npm run build && father doc deploy",
-    "now-build": "npm run build"
+    "now-build": "npm run build",
+    "prepare": "npm run compile"
   },
   "peerDependencies": {
     "react": "*",
